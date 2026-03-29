@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "cinematic-dev",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["next", "dev", "-p", "3789"],
+      "port": 3789,
+      "cwd": "/Users/lorenzobandawe/Desktop/cinematic-landscaper-template"
+    }
+  ]
+}
