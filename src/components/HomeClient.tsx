@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect } from "react";
 import CinematicCanvas from "@/components/CinematicCanvas";
+import CanvasErrorBoundary from "@/components/CanvasErrorBoundary";
 import HeroOverlay from "@/components/HeroOverlay";
 import ServicesSection from "@/components/ServicesSection";
 import AboutSection from "@/components/AboutSection";
@@ -115,10 +116,12 @@ export default function HomeClient() {
       <CinematicCaptions />
 
       {/* Cinematic scroll section */}
-      <CinematicCanvas
-        onLoadProgress={handleProgress}
-        onLoaded={handleLoaded}
-      />
+      <CanvasErrorBoundary onFallback={handleLoaded}>
+        <CinematicCanvas
+          onLoadProgress={handleProgress}
+          onLoaded={handleLoaded}
+        />
+      </CanvasErrorBoundary>
 
       {/* Smooth fade from cinematic into content */}
       <div className="cinematic-end-fade" />
