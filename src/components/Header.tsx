@@ -90,12 +90,26 @@ export default function Header() {
             style={{
               textDecoration: "none",
               display: "flex",
-              flexDirection: "column",
-              gap: "2px",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "10px",
               position: "relative",
               zIndex: 52,
             }}
           >
+            {"logo" in client &&
+            typeof (client as Record<string, unknown>).logo === "string" ? (
+              <img
+                src={(client as Record<string, unknown>).logo as string}
+                alt={`${client.name} logo`}
+                style={{
+                  height: "56px",
+                  width: "auto",
+                  objectFit: "contain",
+                  filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.4))",
+                }}
+              />
+            ) : null}
             <span
               style={{
                 color: "white",
