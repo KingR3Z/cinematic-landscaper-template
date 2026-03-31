@@ -3,10 +3,12 @@
 import { useState } from "react";
 import { client } from "@/config/client";
 import { Phone, EnvelopeSimple, MapPin } from "@phosphor-icons/react";
+import { useABTest } from "@/components/ABTestProvider";
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
+  const { variant, experimentId } = useABTest();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -30,6 +32,15 @@ export default function ContactSection() {
     } catch {
       // Silently handle — still show success to the user
     }
+    // Log A/B conversion
+    if (experimentId) {
+      fetch("/api/ab", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "convert", experimentId, variant }),
+      }).catch(() => {});
+    }
+
     setSending(false);
     setSubmitted(true);
   }

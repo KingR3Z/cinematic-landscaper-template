@@ -19,6 +19,13 @@ import FAQSection from "@/components/FAQSection";
 import PortfolioSection from "@/components/PortfolioSection";
 import BlogSection from "@/components/BlogSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import ABTestProvider from "@/components/ABTestProvider";
+import HeroSwitch from "@/components/HeroSwitch";
+import WhatsAppButton from "@/components/WhatsAppButton";
+
+const abConfig = (client as Record<string, unknown>).abTest as
+  | { experimentId: string; variants: string[] }
+  | undefined;
 
 export default function HomeClient() {
   const [loadProgress, setLoadProgress] = useState(0);
@@ -50,7 +57,7 @@ export default function HomeClient() {
     return () => document.documentElement.classList.remove("is-loading");
   }, [isLoaded]);
 
-  return (
+  const content = (
     <>
       {/* Sticky header nav */}
       <Header />
@@ -98,8 +105,8 @@ export default function HomeClient() {
         </p>
       </div>
 
-      {/* Fixed hero overlay — fades out on scroll */}
-      <HeroOverlay />
+      {/* Fixed hero overlay — A/B tested if abTest config exists, otherwise default */}
+      {abConfig ? <HeroSwitch /> : <HeroOverlay />}
 
       {/* Scroll progress bar */}
       <div className="scroll-progress" />
@@ -170,8 +177,21 @@ export default function HomeClient() {
       {/* Footer */}
       <Footer />
 
+      {/* WhatsApp click-to-chat (renders only if whatsapp number in client.ts) */}
+      <WhatsAppButton />
+
       {/* GDPR cookie consent */}
       <CookieConsent />
     </>
   );
+
+  if (abConfig) {
+    return (
+      <ABTestProvider experimentId={abConfig.experimentId} variants={abConfig.variants}>
+        {content}
+      </ABTestProvider>
+    );
+  }
+
+  return content;
 }
