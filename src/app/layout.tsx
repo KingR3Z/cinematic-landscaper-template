@@ -1,6 +1,21 @@
 import type { Metadata } from "next";
+import { Playfair_Display, Space_Grotesk } from "next/font/google";
 import { client } from "@/config/client";
 import "./globals.css";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-heading",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-body",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: client.seo.title,
@@ -54,12 +69,8 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
+    <html lang="en" className={`${playfair.variable} ${spaceGrotesk.variable}`}>
       <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

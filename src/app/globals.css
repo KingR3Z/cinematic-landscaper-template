@@ -30,14 +30,14 @@
 }
 
 html {
-  font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body), "Space Grotesk", system-ui, -apple-system, sans-serif;
   color: var(--color-dark);
   background: #0a0a0a; /* taste skill: no pure black */
   overflow-x: hidden;
 }
 
 h1, h2, h3 {
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: var(--font-heading), "Playfair Display", Georgia, serif;
 }
 
 /* taste skill: body paragraph constraint */
@@ -274,7 +274,7 @@ html.is-loading {
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-family: var(--font-body), "Space Grotesk", system-ui, sans-serif;
 }
 
 .pill-badge-accent {
@@ -404,7 +404,7 @@ html.is-loading {
   font-size: 1.4rem;
   font-weight: 400;
   margin: 40px 0 16px;
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: var(--font-heading), "Playfair Display", Georgia, serif;
 }
 
 .blog-content h3 {
@@ -412,7 +412,7 @@ html.is-loading {
   font-size: 1.15rem;
   font-weight: 500;
   margin: 32px 0 12px;
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: var(--font-heading), "Playfair Display", Georgia, serif;
 }
 
 .blog-content p {
