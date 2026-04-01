@@ -104,7 +104,33 @@ export default function HeroOverlay() {
           {client.category} | {client.city}
         </p>
 
-        {/* No CTA button — let the scroll animation do the selling */}
+        {/* Google rating badge — instant trust signal for cold outreach prospects */}
+        {client.googleRating && (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              padding: "8px 16px",
+              background: "rgba(255,255,255,0.08)",
+              backdropFilter: "blur(8px)",
+              borderRadius: "100px",
+              border: "1px solid rgba(255,255,255,0.1)",
+            }}
+          >
+            <span style={{ color: "#facc15", fontSize: "1rem", lineHeight: 1 }}>&#9733;</span>
+            <span
+              style={{
+                color: "rgba(255,255,255,0.9)",
+                fontSize: "0.8rem",
+                fontWeight: 500,
+                letterSpacing: "0.02em",
+              }}
+            >
+              {client.googleRating} — {client.reviewCount} Google Reviews
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Scroll indicator — bottom centre (hidden on mobile via CSS) */}
