@@ -409,7 +409,7 @@ function DashboardContent({
           <p style={styles.footerText}>
             Powered by{" "}
             <a
-              href="https://olibuddy.com"
+              href="https://olybuddy.com"
               target="_blank"
               rel="noopener noreferrer"
               style={styles.footerBrand}
