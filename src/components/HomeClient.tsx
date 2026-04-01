@@ -40,6 +40,20 @@ export default function HomeClient() {
     setTimeout(() => setIsLoaded(true), 300);
   }, []);
 
+  // Capture UTM params on first load for campaign attribution
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+    const utm: Record<string, string> = {};
+    utmKeys.forEach((k) => {
+      const v = params.get(k);
+      if (v) utm[k] = v;
+    });
+    if (Object.keys(utm).length > 0) {
+      sessionStorage.setItem("utm", JSON.stringify(utm));
+    }
+  }, []);
+
   useEffect(() => {
     if (!isLoaded) {
       document.documentElement.classList.add("is-loading");

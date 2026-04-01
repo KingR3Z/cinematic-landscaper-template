@@ -23,11 +23,18 @@ export default function ContactSection() {
       message: (form.elements.namedItem("contact-message") as HTMLTextAreaElement).value,
     };
 
+    // Include UTM attribution data if available
+    let utm: Record<string, string> = {};
+    try {
+      const stored = sessionStorage.getItem("utm");
+      if (stored) utm = JSON.parse(stored);
+    } catch { /* ignore parse errors */ }
+
     try {
       await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, ...(Object.keys(utm).length > 0 ? { utm } : {}) }),
       });
     } catch {
       // Silently handle — still show success to the user
