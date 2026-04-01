@@ -414,7 +414,7 @@ function DashboardContent({
               rel="noopener noreferrer"
               style={styles.footerBrand}
             >
-              Olibuddy
+              Olybuddy
             </a>
           </p>
         </footer>
