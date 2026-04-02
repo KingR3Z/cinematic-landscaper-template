@@ -169,6 +169,36 @@ export default function Header() {
               </a>
             ))}
 
+            {/* Phone CTA */}
+            <a
+              href="tel:+441233560871"
+              style={{
+                padding: "10px 20px",
+                background: "var(--color-accent)",
+                borderRadius: "50px",
+                color: "#0a0a0a",
+                fontSize: "0.75rem",
+                fontWeight: 600,
+                letterSpacing: "0.04em",
+                textDecoration: "none",
+                fontFamily: "'Space Grotesk', sans-serif",
+                transition: `all 0.3s ${CUBIC}`,
+                minHeight: "44px",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.opacity = "0.85";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.opacity = "1";
+              }}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Call 24/7
+            </a>
+
             {/* CTA Button */}
             <a
               href="#contact"
@@ -351,12 +381,47 @@ export default function Header() {
           </a>
         ))}
 
+        {/* Mobile Phone CTA */}
+        <a
+          href="tel:+441233560871"
+          onClick={closeMenu}
+          style={{
+            marginTop: "16px",
+            padding: "16px 32px",
+            background: "var(--color-accent)",
+            borderRadius: "50px",
+            color: "#0a0a0a",
+            fontSize: "1rem",
+            fontWeight: 600,
+            letterSpacing: "0.04em",
+            textDecoration: "none",
+            textAlign: "center",
+            fontFamily: "'Space Grotesk', sans-serif",
+            width: "100%",
+            maxWidth: "320px",
+            minHeight: "60px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
+            transition: `opacity 0.4s ${CUBIC}, transform 0.5s ${CUBIC}`,
+            opacity: menuOpen ? 1 : 0,
+            transform: menuOpen ? "translateY(0)" : "translateY(16px)",
+            transitionDelay: menuOpen
+              ? `${0.08 + navLinks.length * 0.04}s`
+              : "0s",
+          }}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call us 24/7
+        </a>
+
         {/* Mobile CTA */}
         <a
           href="#contact"
           onClick={closeMenu}
           style={{
-            marginTop: "16px",
+            marginTop: "8px",
             padding: "16px 32px",
             border: "1px solid rgba(255,255,255,0.25)",
             borderRadius: "50px",
@@ -378,7 +443,7 @@ export default function Header() {
             opacity: menuOpen ? 1 : 0,
             transform: menuOpen ? "translateY(0)" : "translateY(16px)",
             transitionDelay: menuOpen
-              ? `${0.08 + navLinks.length * 0.04}s`
+              ? `${0.08 + (navLinks.length + 1) * 0.04}s`
               : "0s",
           }}
           onMouseEnter={(e) => {
