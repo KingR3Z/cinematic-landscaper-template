@@ -27,17 +27,17 @@ export default function Footer() {
           }}
         >
           {client.facebook && (
-            <a href={client.facebook} style={{ color: "rgba(255,255,255,0.5)", padding: "12px 16px" }}>
+            <a href={client.facebook} target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.5)", padding: "12px 16px" }}>
               Facebook
             </a>
           )}
           {client.instagram && (
-            <a href={client.instagram} style={{ color: "rgba(255,255,255,0.5)", padding: "12px 16px" }}>
+            <a href={client.instagram} target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.5)", padding: "12px 16px" }}>
               Instagram
             </a>
           )}
           {client.linkedin && (
-            <a href={client.linkedin} style={{ color: "rgba(255,255,255,0.5)", padding: "12px 16px" }}>
+            <a href={client.linkedin} target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.5)", padding: "12px 16px" }}>
               LinkedIn
             </a>
           )}
